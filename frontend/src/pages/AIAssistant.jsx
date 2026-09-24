@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { API_URL } from "../config";
 
 function AIAssistant() {
   const [messages, setMessages] = useState([
@@ -38,7 +39,7 @@ function AIAssistant() {
         : null;
 
       const response = await fetch(
-        "http://127.0.0.1:8000/ai/chat",
+  `${API_URL}/ai/chat`,
         {
           method: "POST",
           headers: {

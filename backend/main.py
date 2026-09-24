@@ -1,3 +1,4 @@
+import os
 from services.ai_chat import chat_with_ai
 from services.ai_analysis import analyze_experiment
 from services.ai_planner import create_experiment_plan
@@ -16,9 +17,14 @@ app = FastAPI(
     version="1.0.0"
 )
 
+frontend_url = os.getenv(
+    "FRONTEND_URL",
+    "http://localhost:5173"
+)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=[frontend_url],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

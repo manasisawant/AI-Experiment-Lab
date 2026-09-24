@@ -11,6 +11,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { API_URL } from "../config";
 
 function Results() {
   const [experiment, setExperiment] = useState(null);
@@ -96,9 +97,7 @@ function Results() {
     setAiAnalysis("");
 
     try {
-      const response = await fetch(
-        "http://127.0.0.1:8000/ai/analyze",
-        {
+      const response = await fetch(`${API_URL}/ai/analyze`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
